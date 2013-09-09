@@ -1,0 +1,22 @@
+cd ~
+ls -a
+echo "Hello World" > datorfil
+mkdir mapp
+mv datorfil mapp/
+cd mapp
+cp datorfil kopia
+rm datorfil
+mkdir slask
+mv kopia slask/
+cd slask
+ls -lA
+pwd
+cat kopia
+whoami
+date
+cd ~
+rm mapp/slask/kopia
+rmdir mapp/slask
+rmdir mapp
+ps --user niil
+exit
