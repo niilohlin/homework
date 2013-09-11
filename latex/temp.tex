@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[swedish]{babel}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+\title{temp}
+\author{Niil Ohlin}
+\date{}
+\maketitle
+
+\section{The Koch Snowflake}
+The \emph{Koch snowflake} one of the first fractals, is based on work by the
+Swedish mathematician Helge von Koch \label{koch}. It is what we get if we
+start with an 
+%har ar bilden
+The initial equilateral triangle and the refinement of the Koch snowflake
+after one, two, and ther iterations.
+
+equilateral triangle and repeat the following an infinite number of times:
+
+Divide all line segments into three segments of equal length. Then draw,
+for each middle line segment an equilateral triangle that has the middle
+segment as its base and points outward. Finally, remove all middle segments.
+
+shows the firstiterations in the construction. (Original)
+\subsection{Two properties}
+\paragraph{Theorem 1.} \emph{The Koch snowflake has infinite length.}
+\emph{Proof.} Let $\Delta$ denote a triangle, with side length $s$, on which
+we base the construction of a snowflake. Len $N_i$ denote the number of line
+segments, and $L_i$ the lenth of the segments, in iteration $i$ of the construction. 
+Then
+$$
+	N_n = \{
+$$
+which solves to
+\begin{equation}
+	N_n = 3 \cdot 4^n,
+\end{equation}
+while
+\newcommand{\uberfrac}[1]{
+	= \frac {L_{n - #1}} {3^#1}
+}
+
+\begin{equation}
+	L_n = \frac {L_{n-1}} {3} \uberfrac{2} \uberfrac{3} = \ldots = 
+		\frac{L_0} {3^n} = \frac s {3^n}
+\end{equation}
+The total length
+$$
+	N_nL_n = 3 \cdot 4^n \frac s {3^n} = 3s \frac {4^n} {3^n} = 3s \left (
+		\frac 4 3
+	\right )^n.
+$$
+Since $4 / 3 > 1$, it follows that $N_nL_n$ tends to infinity as
+$n \to \infty$, i.e. the Koch snowflake has infinite length. 
+\hfill \qed
+\paragraph{Theorem 2}. \emph{The Koch snowflake has finite area.}
+\emph{Proof.} In an iteration, a triangle is added on each line segment of the
+previous iterations. So, in iteration $n$, the number of new triangle
+$T_n = N_{n-1}$, which, by aoenthu can be siplified to
+\begin{equation}
+	T_n = \frac 3 4 \cdot 4^n.
+\end{equation}
+The area $a_n$ of each such triangle, with the exception of the area
+$a_0 = \frac {\sqrt 3 4 s^2}$
+
+\end{document}
