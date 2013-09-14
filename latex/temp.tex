@@ -64,6 +64,52 @@ $T_n = N_{n-1}$, which, by aoenthu can be siplified to
 	T_n = \frac 3 4 \cdot 4^n.
 \end{equation}
 The area $a_n$ of each such triangle, with the exception of the area
-$a_0 = \frac {\sqrt 3 4 s^2}$
+$a_0 = \frac {\sqrt 3} 4 s^2$ of $\delta$, is one ninith of the area of a 
+triangle added in iteration $n - 1$, or
 
+\begin{equation}
+	a_n = \frac {a_{n-1}} {9}
+		= \frac {a_{n-2}} {9^2}
+		= \frac {a_{n-3}} {9^3}
+		= \ldots
+		= \frac {a_0} {9^n}.
+\end{equation}
+%may be better to ref
+This means that in iteration $n$ be Eqs. 3 and 4, the area of all added
+triangles
+$$
+	b_n = T_na_n = \left (
+		\frac 3 4 \cdot 4^n
+	\right )
+	\left (
+		\frac {a_0} {9^n}
+	\right ) = \frac {3a_0} 4 \left (
+	\frac 4 9
+	\right )^n
+$$
+All in all, after iteration $n$, the tatal area \hfill (Original)
+\newcommand{\ubersum}[2] {
+	\sum_{k=#2}^{n#1}
+}
+\begin{align*}
+	A_n &= a_0 + \ubersum{}{1} b_k \\
+		&= a_0 \left (
+				1 + \frac 3 4 \ubersum{}{1}\left(\frac 4 9 \right )^k
+			\right )
+		&= a_0 \left (
+				1 + \frac 1 3 \ubersum{-1}{0}\left(\frac 4 9 \right )^k
+			\right )
+		&= a_0 \left (
+				1 + \frac 3 5 \left ( 1 - \left( \frac 4 9 \right )^n \right )
+			\right )
+		&= \frac {a_0} 5 \left (
+				8 - 3 \left ( \frac 4 9 \right )^n
+			\right )
+\end{align*}
+Now, since
+$$
+	\lim_{n \to \infty} 3 \left ( \frac 4 9 \right )^n = 0,
+$$
+it follows that $lim_{n \to \infty} A_n = \frac {8a_0} 5$, i.e. the Koch 
+snowflake has finite area. \hfill \qed
 \end{document}
