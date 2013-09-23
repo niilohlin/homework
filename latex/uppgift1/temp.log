@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.9.9)  17 SEP 2013 21:02
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.9.9)  23 SEP 2013 17:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -9,8 +9,8 @@ Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, lo
 aded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@section=\count80
@@ -97,22 +97,21 @@ Package: amsthm 2009/07/02 v2.20.1
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2008/07/08 v3.8m The Babel package
 
-(/usr/share/texlive/texmf-dist/tex/generic/babel/swedish.ldf
-Language: swedish 2005/03/31 v2.3d Swedish support from the babel system
+(/usr/share/texlive/texmf-dist/tex/generic/babel/english.ldf
+Language: english 2005/03/30 v3.3o English support from the babel system
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2008/07/08 v3.8m Babel common definitions
 \babel@savecnt=\count99
 \U@D=\dimen112
 )
-
-Package babel Warning: No hyphenation patterns were loaded for
-(babel)                the language `Swedish'
-(babel)                I will use the patterns loaded for \language=0 instead.
-
-\l@swedish = a dialect from \language0
-Package babel Info: Making " an active character on input line 90.
-)) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+\l@british = a dialect from \language\l@english 
+\l@UKenglish = a dialect from \language\l@english 
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks25
 \inpenc@posthook=\toks26
@@ -367,34 +366,36 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibsep=\skip50
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count101
-) (./temp.aux)
+)
+\c@theorem=\count102
+ (./temp.aux)
 \openout1 = `temp.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count102
+\scratchcounter=\count103
 \scratchdimen=\dimen115
 \scratchbox=\box28
-\nofMPsegments=\count103
-\nofMParguments=\count104
+\nofMPsegments=\count104
+\nofMParguments=\count105
 \everyMPshowfont=\toks28
-\MPscratchCnt=\count105
+\MPscratchCnt=\count106
 \MPscratchDim=\dimen116
-\MPnumerator=\count106
-\makeMPintoPDFobject=\count107
+\MPnumerator=\count107
+\makeMPintoPDFobject=\count108
 \everyMPtoPDFconversion=\toks29
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -447,46 +448,34 @@ e
 <snowflake.jpg, id=1, 521.95pt x 137.51375pt>
 File: snowflake.jpg Graphic file (type jpg)
  <use snowflake.jpg>
-Package pdftex.def Info: snowflake.jpg used on input line 18.
-(pdftex.def)             Requested size: 208.77629pt x 55.00452pt.
+Package pdftex.def Info: snowflake.jpg used on input line 28.
+(pdftex.def)             Requested size: 256.0748pt x 67.46625pt.
+ [1
 
-Overfull \hbox (9.47285pt too wide) in paragraph at lines 20--24
-\OT1/cmr/m/n/10 Figure 1:$ $The ini-tial equi-lat-er-al tri-an-gle and the re-f
-ine-ment of the Koch snowflake
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 20--24
-
- []
-
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./snowflake.jpg>]
-[2] (./temp.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./snowflake.jpg>] [2] (./t
+emp.aux) ) 
 Here is how much of TeX's memory you used:
- 3029 strings out of 495059
- 38638 string characters out of 3182031
- 104777 words of memory out of 3000000
- 6178 multiletter control sequences out of 15000+200000
- 5958 words of font info for 22 fonts, out of 3000000 for 9000
+ 3014 strings out of 495059
+ 38292 string characters out of 3182031
+ 103861 words of memory out of 3000000
+ 6155 multiletter control sequences out of 15000+200000
+ 8915 words of font info for 32 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 38i,11n,28p,257b,174s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
-2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmti10.pfb>
-Output written on temp.pdf (2 pages, 133332 bytes).
+ 38i,11n,28p,257b,229s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmti12.pfb>
+Output written on temp.pdf (2 pages, 120027 bytes).
 PDF statistics:
- 56 PDF objects out of 1000 (max. 8388607)
- 39 compressed objects within 1 object stream
+ 52 PDF objects out of 1000 (max. 8388607)
+ 36 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
