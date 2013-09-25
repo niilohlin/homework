@@ -10,7 +10,7 @@ def _almost_equal(a, b, h):
 	else:
 		return False
 
-def newton_raphson(f, x, h):
+def solve(f, x, h):
 	old_x = x
 	while not _almost_equal(f(x), 0, h):
 		try:
