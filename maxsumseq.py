@@ -1,5 +1,8 @@
 import time
 import random
+import benchmark
+import array
+import numpy
 
 
 def quadratic(sequence):
@@ -10,7 +13,6 @@ def quadratic(sequence):
 				result = sequence[i:j]
 	return result
 
-#oops, there is a bug here. [1, 2, 3, -1] is wrong
 def linear(sequence):
 	current = []
 	largest = []
@@ -20,49 +22,89 @@ def linear(sequence):
 		else:
 			current = []
 		if sum(current) > sum(largest):
-			largest = current
+			# largest = current; copies the reference
+			largest = [i for i in current] 
 	return largest
 		
 #############################################
+def part(arr):
+	current = []
+	largest = [] 
+	csum = 0
+	lsum = 0
+	for i in range(len(arr)):
+		a = arr[i]
+		if csum + a > 0:
+			current.append(a)
+			csum += a
+		else:
+			current = []
+			csum = 0
+		if csum > lsum:
+			largest = [i for i in current]
+			lsum = csum
+	return largest
+
 def linearoptimized(arr):
 	arrlength = len(arr)
-	current = [0] * arrlength
+	current = numpy.array([0] * arrlength)
 	cindex = 0
 	csum = 0
-	largest = [0] * arrlength
+	largest = numpy.array([0] * arrlength)
 	lindex = 0
 	lsum = 0
 	for i in range(arrlength):
-		if csum + arr[i] > 0:
-			current[cindex] = arr[i]
+		a = arr[i]
+		if csum + a > 0:
+			current[cindex] = a
 			cindex += 1
-			csum += arr[i]
+			csum += a
 		else:
-			current = [0] * arrlength
+			current.fill(0)
 			cindex = 0
 			csum = 0
 
 		if csum > lsum:
 			lsum = csum
-			largest = current
-	return largest[0:cindex]
+			largest = current.copy()
+			lindex = cindex
+	return largest[0:lindex]
+
+# there is another way, with two indexes and a sum
 
 
 
 #############################################
-def stopwatch(f, n=10):
-	arr = range(-n, n)
-	random.shuffle(arr)
-	t = time.time()
-	f(arr)
-	return time.time() - t
 
-print "quadractic"
-for i in range(20):
-	print stopwatch(quadratic, n=i*10)
-print
-print "linear"
-for i in range(20):
-	print stopwatch(linear, n=i*10)
+class Bmark(benchmark.Benchmark):
+	def setUp(self):
+		self.n = 500
+		self.times = 50
+		self.array = []
+		random.shuffle(self.array)
+				
+		
+#	def test_quad(self):
+#		quadratic(self.array)
+		
+	def test_part(self):
+		for i in range(self.times):
+			self.array = range(-self.n, self.n)
+			random.shuffle(self.array)
+			part(numpy.array(self.array))
+		
+	def test_linear(self):
+		for i in range(self.times):
+			self.array = range(-self.n, self.n)
+			random.shuffle(self.array)
+			#linear(numpy.array(self.array))# reeeeeally slow
+			linear(self.array)
+	
+	def test_opti(self):
+		for i in range(self.times):
+			self.array = range(-self.n, self.n)
+			random.shuffle(self.array)
+			linearoptimized(numpy.array(self.array))
 
-
+if __name__ == '__main__':
+	benchmark.main()
