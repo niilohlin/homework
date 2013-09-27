@@ -10,6 +10,7 @@ def quadratic(sequence):
 				result = sequence[i:j]
 	return result
 
+#oops, there is a bug here. [1, 2, 3, -1] is wrong
 def linear(sequence):
 	current = []
 	largest = []
@@ -22,6 +23,32 @@ def linear(sequence):
 			largest = current
 	return largest
 		
+#############################################
+def linearoptimized(arr):
+	arrlength = len(arr)
+	current = [0] * arrlength
+	cindex = 0
+	csum = 0
+	largest = [0] * arrlength
+	lindex = 0
+	lsum = 0
+	for i in range(arrlength):
+		if csum + arr[i] > 0:
+			current[cindex] = arr[i]
+			cindex += 1
+			csum += arr[i]
+		else:
+			current = [0] * arrlength
+			cindex = 0
+			csum = 0
+
+		if csum > lsum:
+			lsum = csum
+			largest = current
+	return largest[0:cindex]
+
+
+
 #############################################
 def stopwatch(f, n=10):
 	arr = range(-n, n)
