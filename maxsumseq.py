@@ -7,8 +7,8 @@ import numpy
 
 def quadratic(sequence):
 	result = []
-	for i in range(len(sequence)):
-		for j in range(i,len(sequence) + 1):
+	for i in xrange(len(sequence)):
+		for j in xrange(i,len(sequence) + 1):
 			if sum(sequence[i:j]) > sum(result):
 				result = sequence[i:j]
 	return result
@@ -23,17 +23,19 @@ def linear(sequence):
 			current = []
 		if sum(current) > sum(largest):
 			# largest = current; copies the reference
-			largest = [i for i in current] 
+			largest = []
+			for j in current:
+				largest.append(j)
 	return largest
 		
 #############################################
+
 def part(arr):
 	current = []
 	largest = [] 
 	csum = 0
 	lsum = 0
-	for i in range(len(arr)):
-		a = arr[i]
+	for a in arr:
 		if csum + a > 0:
 			current.append(a)
 			csum += a
@@ -41,7 +43,7 @@ def part(arr):
 			current = []
 			csum = 0
 		if csum > lsum:
-			largest = [i for i in current]
+			largest = current[:]
 			lsum = csum
 	return largest
 
@@ -53,7 +55,7 @@ def linearoptimized(arr):
 	largest = numpy.array([0] * arrlength)
 	lindex = 0
 	lsum = 0
-	for i in range(arrlength):
+	for i in xrange(arrlength):
 		a = arr[i]
 		if csum + a > 0:
 			current[cindex] = a
@@ -70,7 +72,25 @@ def linearoptimized(arr):
 			lindex = cindex
 	return largest[0:lindex]
 
-# there is another way, with two indexes and a sum
+def uberopti(arr):
+	maxsum = 0
+	maxbegin = 0
+	maxend = 0
+	tempsum = 0
+	tempbegin = 0
+	for end in xrange(len(arr)):
+		c = arr[end]
+		if tempsum + c > 0:
+			tempsum += c
+		else:
+			tempsum = 0
+			tempbegin = end + 1
+			
+		if tempsum > maxsum:
+			maxsum = tempsum
+			maxbegin = tempbegin
+			maxend = end
+	return arr[maxbegin:maxend + 1]
 
 
 
@@ -88,23 +108,29 @@ class Bmark(benchmark.Benchmark):
 #		quadratic(self.array)
 		
 	def test_part(self):
-		for i in range(self.times):
+		for i in xrange(self.times):
 			self.array = range(-self.n, self.n)
 			random.shuffle(self.array)
 			part(numpy.array(self.array))
 		
 	def test_linear(self):
-		for i in range(self.times):
+		for i in xrange(self.times):
 			self.array = range(-self.n, self.n)
 			random.shuffle(self.array)
 			#linear(numpy.array(self.array))# reeeeeally slow
 			linear(self.array)
 	
 	def test_opti(self):
-		for i in range(self.times):
+		for i in xrange(self.times):
 			self.array = range(-self.n, self.n)
 			random.shuffle(self.array)
 			linearoptimized(numpy.array(self.array))
+	
+	def test_uber(self):
+		for i in xrange(self.times):
+			self.array = range(-self.n, self.n)
+			random.shuffle(self.array)
+			uberopti(self.array)
 
 if __name__ == '__main__':
 	benchmark.main()
