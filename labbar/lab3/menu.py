@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8
+import structures
 
 def main():
 	print "0) Parallel lists"
@@ -9,6 +10,13 @@ def main():
 	data = -1
 	while not data in range(3):
 		data = int(raw_input("choose datastructure: "))
+	
+	if data == 0:
+		data_structure = structures.MyPlist()
+	elif data == 1:
+		data_structure = structures.MyTlist()
+	else:
+		data_structure = structures.MyDlist()
 
 	mode = -1
 	while not mode in range(3):
@@ -21,12 +29,6 @@ def main():
 
 			mode = int(raw_input("choose alternative: "))
 			
-			if data == 0:
-				import parallel as data_structure
-			elif data == 1:
-				import tuplelist as data_structure
-			else:
-				import dictionary_structure as data_structure
 			
 			if mode == 0:
 				k = raw_input("word to insert: ")
@@ -35,6 +37,7 @@ def main():
 			elif mode == 1:
 				k = raw_input("Word to lookup: ")
 				print "description for %s: %s" % (k, data_structure.get(k))
+				print
 
 if __name__ == '__main__':
 	main()

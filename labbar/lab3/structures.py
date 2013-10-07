@@ -20,9 +20,14 @@ class MyTlist(AbstractStructure):
 				return mylist
 		upper = len(mylist)
 		lower = 0
+		oldi = -1
 		while True:
 			i = (upper + lower) / 2
-
+			
+			if oldi == i and option == "get":
+				return "not found"
+			oldi = i
+			
 			if mylist[i][0] < a:
 				lower = i
 			elif mylist[i][0] > a:
@@ -43,10 +48,10 @@ class MyTlist(AbstractStructure):
 					return mylist
 
 	def insert(self, k, v):
-		self._mylist = _handle('insert', k, _mylist, v)
+		self._mylist = self._handle('insert', k, self._mylist, v)
 
 	def get(self, k):
-		return _handle('get', k, self._mylist)
+		return self._handle('get', k, self._mylist)
 
 class MyPlist(AbstractStructure):
 	def __init__(self):
@@ -64,9 +69,12 @@ class MyPlist(AbstractStructure):
 
 		upper = len(alist)
 		lower = 0
+		oldi = -1
 		while True:
 			i = (upper + lower) / 2
-			
+			if oldi == i and option == "get":
+				return "not found"
+			oldi = i
 			if alist[i] < a:
 				lower = i
 			elif alist[i] > a:
@@ -102,11 +110,11 @@ class MyPlist(AbstractStructure):
 
 	def insert(self, k, v):
 		"""Insert into parallel list values k for key and v for value"""
-		self._a, self._b = _handle('insert', k, self._a, self._b, v)
+		self._a, self._b = self._handle('insert', k, self._a, self._b, v)
 
 	def get(self, k):
 		"""Return the corresponding element"""
-		return _handle('get', k, self._a, self._b)
+		return self._handle('get', k, self._a, self._b)
 
 
 
@@ -118,5 +126,8 @@ class MyDlist(AbstractStructure):
 		self._dictionary[k] = v
 
 	def get(self, k):
+		if not k in self._dictionary.iterkeys():
+			return "not found"
+		
 		return self._dictionary[k]
 
