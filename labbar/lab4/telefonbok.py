@@ -1,39 +1,27 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-phonebook = {}
-prompt = "phonebook> "
+import parser
 
-class NoFunction(Exception):
-	pass
+class Entry:
+    def __init__(self, name, number):
+        self.alias = []
+        alias.append(name)
+        self.number = number
+    
+    def alias(self, alias):
+        self.alias.append(alias)
+    
+    def change(self, newnumber):
+        self.number = newnumber
 
-def parse(text, pbook):
-	elements = text.split(' ')
-	function = elements[0]
-	args = elements[1:len(elements)]
-	if not function in ['add', 'alias', 'change', 'save', 'load',
-			'lookup', 'save', 'quit']:
-		raise NoFunction
-
-	resbook = pbook
-	if function == 'add':
-		resbook[elements[0]] = elements[1]
-		return resbook
-	elif function == 'lookup':
-		return pbook[elements[0]]
-	elif function == 'alias':
-		resbook[elements[1]] = pbook[elements[0]]
-		return resbook
-	elif function == 'change':
-		resbook[
-
+def exe(tree):
+    for statement in tree:
+        if statement[0] == Keyword("add"):
+            pass
+        
 def main():
-	inp = ''
-	while not inp == "quit":
-		try:
-			inp = raw_input(prompt)
-		except(NoFunction):
-			print 'no such function'
+    pass
 
-
-
+if __name__ == '__main__':
+    main()
