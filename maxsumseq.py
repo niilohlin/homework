@@ -16,16 +16,13 @@ def quadratic(sequence):
 def linear(sequence):
 	current = []
 	largest = []
-	for i in range(len(sequence)):
-		if sum(current) + sequence[i] > 0:
-			current.append(sequence[i])
+	for i in sequence:
+		if sum(current) + i > 0:
+			current.append(i)
 		else:
 			current = []
 		if sum(current) > sum(largest):
-			# largest = current; copies the reference
-			largest = []
-			for j in current:
-				largest.append(j)
+			largest = current[:]
 	return largest
 		
 #############################################
@@ -98,7 +95,7 @@ def uberopti(arr):
 
 class Bmark(benchmark.Benchmark):
 	def setUp(self):
-		self.n = 500
+		self.n = 10000
 		self.times = 50
 		self.array = []
 		random.shuffle(self.array)
@@ -108,29 +105,26 @@ class Bmark(benchmark.Benchmark):
 #		quadratic(self.array)
 		
 	def test_part(self):
-		for i in xrange(self.times):
-			self.array = range(-self.n, self.n)
-			random.shuffle(self.array)
-			part(numpy.array(self.array))
+		self.array = range(-self.n, self.n)
+		random.shuffle(self.array)
+		part(self.array)
+#		part(numpy.array(self.array))
 		
-	def test_linear(self):
-		for i in xrange(self.times):
-			self.array = range(-self.n, self.n)
-			random.shuffle(self.array)
-			#linear(numpy.array(self.array))# reeeeeally slow
-			linear(self.array)
-	
-	def test_opti(self):
-		for i in xrange(self.times):
-			self.array = range(-self.n, self.n)
-			random.shuffle(self.array)
-			linearoptimized(numpy.array(self.array))
+#	def test_linear(self):
+#		self.array = range(-self.n, self.n)
+#		random.shuffle(self.array)
+#		linear(self.array)
 	
 	def test_uber(self):
-		for i in xrange(self.times):
-			self.array = range(-self.n, self.n)
-			random.shuffle(self.array)
-			uberopti(self.array)
+		self.array = range(-self.n, self.n)
+		random.shuffle(self.array)
+		uberopti(self.array)
+#	def test_opti(self):
+#		for i in xrange(self.times):
+#			self.array = range(-self.n, self.n)
+#			random.shuffle(self.array)
+#			linearoptimized(numpy.array(self.array))
+	
 
 if __name__ == '__main__':
 	benchmark.main()

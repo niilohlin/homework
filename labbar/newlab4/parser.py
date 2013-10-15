@@ -2,16 +2,6 @@
 class Token:
     def __init__(self):
         self.token = ""
-    @staticmethod
-    def is_keyword(string):
-        if string in "add lookup alias change save load quit alias_with_pn change_with_pn".split(' '):
-            return True
-        return False
-    
-    
-    @staticmethod
-    def is_identifier(string):
-        return not Token.is_keyword(string)
     
     def __eq__(self, other):
         return self.token == other.token
@@ -21,45 +11,63 @@ class Token:
     def __str__(self):
         return self.token
     
+class Identifier(Token):
+    def __init__(self, string):
+        self.token = string
+    
+    def __repr__(self):
+        return "Identifier(%s)" % self.token
+
 class Keyword(Token):
     def __init__(self, string):
-        if Keyword.is_keyword(string):
-            self.token = string
-        else:
-            raise "error, not a keyword"
+        self.token = string
+        self.arg_type = []
     
     def __repr__(self):
         return "Keyword(%s)" % self.token
 
-class Identifier(Token):
-    def __init__(self, string):
-        if Identifier.is_identifier(string):
-            self.token = string
-        else:
-            raise "error, not a identifier"
-            
-    def __repr__(self):
-        return "Identifier(%s)" % self.token
+class Add(Keyword):
+    def __init__(self):
+        Keyword(self, "add")
+        self.arg_type = [Identifier, Identifier]
+
+class Alias(KeyWord):
+    def __init__(self):
+        Keyword(self, "alias")
+        self.arg_type = [Identifier]
+        
+
+class Change(KeyWord):
+    def __init__(self):
+        Keyword(self, "change")
+        self.arg_type = [Identifier, Identifier]
+        
+class Save(KeyWord):
+    def __init__(self):
+        Keyword(self, "save")
+        self.arg_type = [Identifier]
 
 
+class Load(KeyWord):
+    def __init__(self):
+        Keyword(self, "load")
+        self.arg_type = [Identifier]
+
+class Quit(KeyWord):
+    def __init__(self):
+        Keyword(self, "quit")
+        self.arg_type = []
 
 def lexer(string):
     tokens = []
-    words = string.split(' ')
-    for i in range(len(words)):
-        word = words[i]
+    for word in string.split(' '):
         if Token.is_keyword(word):
             tokens.append(Keyword(word))
         else:
             tokens.append(Identifier(word))
-            if i > 3 and (words[i - 3] == 'change' or words[i - 3] == 'alias'):
-                tokens[i - 3] = Keyword(word + '_with_pn')
-            
     return tokens
     
 def expected_arguments(keyword):
-    if keyword in [Keyword("change_with_pn"), Keyword("alias_with_pn")]:
-        return 3
     if keyword in [Keyword("add"), Keyword("alias"), 
             Keyword("change")]:
         return 2
@@ -94,10 +102,10 @@ def parse(tokens):
         if isinstance(token, Keyword):
             tree.append([token])
         elif isinstance(token, Identifier):
-            if len(tree) > 0:
-                tree[len(tree) - 1].append(token)
+            tree[len(tree) - 1].append(token)
     succ, msg = grammar(tree)
     if not succ:
+        print msg
         return succ, tree
     else:
         return succ, tree    

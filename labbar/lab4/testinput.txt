@@ -1,0 +1,8 @@
+add niil 1234
+alias niil nille
+lookup niil
+lookup nille
+lookup dinmamma
+antoeu ao
+ne ror u
+alias kantaroce roc
