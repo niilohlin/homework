@@ -6,3 +6,8 @@ lookup dinmamma
 antoeu ao
 ne ror u
 alias kantaroce roc
+change niil 4321
+
+alias hurr durr
+save database
+quit

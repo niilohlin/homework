@@ -58,20 +58,25 @@ def change(pbook, name, number):
         return not_found % name
         
 def save(pbook, filename):
+    
+    filename = str(filename)
     f = open(filename, 'w')
     for entry in pbook:
-        f.write(entry.number + ";")
+        num = str(entry.number)
+        f.write(num + ";")
         for alias in entry.aliaslist:
-            f.write(alias + ";")
+            a = str(alias)
+            f.write(a + ";")
+        f.write("\n")
     f.close()
     
 def load(filename):
     """Assume perfect filetype"""
-    f = open(filename, 'r')
+    f = open(str(filename), 'r')
     entries = f.readlines()
     pbook = []
     for entry in entries:
-        values = etry.split(';')
+        values = entry.split(';')
         e = Entry(number=values[0], name=values[1])
         if len(values) > 2:
             for i in range(len(values) - 2):
@@ -100,6 +105,7 @@ def exe(pbook, tree):
             save(pbook, statement[1])
         elif statement[0] == parser.Keyword("load"):
             pbook = load(statement[1])
+            print pbook
         elif statement[0] == parser.Keyword("quit"):
             sys.exit(0)
             
@@ -108,18 +114,23 @@ def exe(pbook, tree):
             print res
             res = ''
 
-prompt = "phonebook"
+prompt = "phonebook :> "
 def main():
     pbook = []
-    while True:
-        print prompt,
-        try:
-            a = raw_input()
-            print a
-        except:
-            break
-        succ, tree = parser.parse(parser.lexer(a))
-        exe(pbook, tree)
+    if len(sys.argv) > 1:
+        for line in open(sys.argv[1], 'r'):
+           print prompt,
+           print line
+           succ, tree = parser.parse(parser.lexer(line))
+           exe(pbook, tree)
+    else:
+        while True:
+            try:
+                a = raw_input(prompt)
+            except:
+                break
+            succ, tree = parser.parse(parser.lexer(a))
+            exe(pbook, tree)
 
 if __name__ == '__main__':
     main()
