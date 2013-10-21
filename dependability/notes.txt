@@ -1,7 +1,0 @@
-* enclosed devices
-* testing
-* design from the start
-* scalability
-* breakable
-* modular
-
