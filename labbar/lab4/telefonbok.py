@@ -36,15 +36,25 @@ def if_in(fun):
 
 not_found = "%s not in phonebook"
 def add(pbook, name, number):
-    pbook.append(Entry(name, number))
+    """Return a new phonebook with name and number added"""
+    res = pbook[:]
+    res.append(Entry(name, number))
+    return res
 
 def alias(pbook, name, newname):
-    if not get(pbook, name) == None:
-        get(pbook, name).alias(newname)
+    """Return a new phonebook with newname aliased to name
+    if name is in phonebook, else return an error string
+    """
+    res = pbook[:]
+    if get(pbook, name):
+        return get(res, name).alias(newname), ""
     else:
-        return not_found % name
+        return res, not_found % name
 
 def lookup(pbook, name):
+    """Return a string that describes the presence of name
+    in pbook
+    """
     temp = get(pbook, name)
     if not temp == None:
         return "%s has phonenumber %s" %(name, temp.number)
@@ -94,9 +104,9 @@ def exe(pbook, tree):
     res = ""
     for statement in tree:
         if statement[0] == parser.Keyword("add"):
-            add(pbook, statement[1], statement[2])
+            pbook = add(pbook, statement[1], statement[2])
         elif statement[0] == parser.Keyword("alias"):
-            res = alias(pbook, statement[1], statement[2])
+            pbook, res = alias(pbook, statement[1], statement[2])
         elif statement[0] == parser.Keyword("lookup"):
             res = lookup(pbook, statement[1])
         elif statement[0] == parser.Keyword("change"):
@@ -113,6 +123,7 @@ def exe(pbook, tree):
         if not res == '':
             print res
             res = ''
+        return pbook
 
 prompt = "phonebook :> "
 def main():
@@ -122,7 +133,7 @@ def main():
            print prompt,
            print line
            succ, tree = parser.parse(parser.lexer(line))
-           exe(pbook, tree)
+           pbook = exe(pbook, tree)
     else:
         while True:
             try:
@@ -130,7 +141,10 @@ def main():
             except:
                 break
             succ, tree = parser.parse(parser.lexer(a))
-            exe(pbook, tree)
+            if succ:
+                pbook = exe(pbook, tree)
+            else:
+                print "derp"
 
 if __name__ == '__main__':
     main()
