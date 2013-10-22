@@ -6,7 +6,7 @@ class Token:
         self.token = ""
     @staticmethod
     def is_keyword(string):
-        if string in "add lookup alias change save load quit alias_with_pn change_with_pn".split(' '):
+        if string in "add lookup alias change save load quit alias_with_pn change_with_pn remove".split(' '):
             return True
         return False
     
@@ -68,7 +68,7 @@ def expected_arguments(keyword):
     if keyword in [Keyword("change_with_pn"), Keyword("alias_with_pn")]:
         return 3
     if keyword in [Keyword("add"), Keyword("alias"), 
-            Keyword("change")]:
+            Keyword("change"), Keyword("remove")]:
         return 2
     elif keyword in [Keyword('lookup'), Keyword('save'), 
             Keyword('load')]:
@@ -109,6 +109,7 @@ def parse(tokens):
         if isinstance(token, Keyword):
             tree.append([token])
         elif isinstance(token, Identifier):
+            
             if len(tree) > 0:
                 tree[len(tree) - 1].append(token)
             elif not token.token == "":

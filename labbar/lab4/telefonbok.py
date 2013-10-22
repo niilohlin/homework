@@ -16,35 +16,56 @@ class Entry:
     def change(self, newnumber):
         self.number = newnumber
 
-class Error:
-    def __init__(self, msg):
-        self.msg = msg
+
+
+def remove(pbook, name, number):
+    """Return a new phonebook with entry containing name
+    and number removed
+    """
+    if get(pbook, name, number):
+        return filter(lambda entry: entry.number != number and \
+                not name in entry.aliaslist, pbook), ""
+    else:
+        return pbook, "%s with number %s not in phonebook" % (name, number)
         
 
-def get(pbook, name):
-    """Loop through the phonebook in order.
-    Return Entry if found. Else None
+def get_all(pbook, name):
+    """Return every entry that has name
     """
+    res = []
     for entry in pbook:
         for alias in entry.aliaslist:
             if name == alias:
-                return entry
+                res.append(entry)
+    return res
+        
+def get(pbook, name, number=None):
+    """Loop through the phonebook in order.
+    Return Entry if found. Else None
+    """
     
-
-def if_in(fun):
-    def new(*args):
-        if get(args[0], args[1]):
-            return fun(*args)
+    for entry in pbook:
+        if not number:
+            for alias in entry.aliaslist:
+                if name == alias:
+                    return entry
         else:
-            return not_found % args[0]
-    return new
-
+            if number == entry.number:
+                for alias in entry.aliaslist:
+                    if name == alias:
+                        return entry
+                    
+    
 not_found = "%s not in phonebook"
 def add(pbook, name, number):
     """Return a new phonebook with name and number added"""
     res = pbook[:]
-    res.append(Entry(name, number))
-    return res
+    if not get(pbook, name):
+        res.append(Entry(name, number))
+        return res, ""
+    else:
+        return res, "%s already in phonebook" % name
+    
 
 def alias(pbook, name, newname):
     """Return a new phonebook with newname aliased to name
@@ -52,6 +73,7 @@ def alias(pbook, name, newname):
     """
     res = pbook[:]
     if get(pbook, name):
+        
         get(res, name).alias(newname)
         return res, ""
     else:
@@ -130,7 +152,7 @@ def exe(pbook, tree):
     res = ""
     for statement in tree:
         if statement[0] == parser.Keyword("add"):
-            pbook = add(pbook, statement[1], statement[2])
+            pbook, res  = add(pbook, statement[1], statement[2])
         elif statement[0] == parser.Keyword("alias"):
             pbook, res = alias(pbook, statement[1], statement[2])
         elif statement[0] == parser.Keyword("lookup"):
@@ -143,6 +165,8 @@ def exe(pbook, tree):
             pbook = load(statement[1])
         elif statement[0] == parser.Keyword("quit"):
             sys.exit(0)
+        elif statement[0] == parser.Keyword("remove"):
+            pbook, res = remove(pbook, statement[1], statement[2])
             
 
         if not res == '':
