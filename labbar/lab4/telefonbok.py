@@ -16,6 +16,11 @@ class Entry:
     def change(self, newnumber):
         self.number = newnumber
 
+class Error:
+    def __init__(self, msg):
+        self.msg = msg
+        
+
 def get(pbook, name):
     """Loop through the phonebook in order.
     Return Entry if found. Else None
@@ -47,7 +52,8 @@ def alias(pbook, name, newname):
     """
     res = pbook[:]
     if get(pbook, name):
-        return get(res, name).alias(newname), ""
+        get(res, name).alias(newname)
+        return res, ""
     else:
         return res, not_found % name
 
@@ -62,10 +68,12 @@ def lookup(pbook, name):
         return not_found % name
 
 def change(pbook, name, number):
-    if get(pbook, name):
-        get(pbook, name).number = number
+    res = pbook[:]
+    if get(res, name):
+        get(res, name).number = number
+        return res, ""
     else:
-        return not_found % name
+        return res, not_found % name
         
 def save(pbook, filename):
     
@@ -81,18 +89,36 @@ def save(pbook, filename):
     f.close()
     
 def load(filename):
-    """Assume perfect filetype"""
-    f = open(str(filename), 'r')
+    """Load a database by generating code for the interpreter 
+    to execute. Return a new phonebook
+    """
+    try:
+        f = open(str(filename), 'r')
+    except:
+        print "oops, file not found"
+        return []
     entries = f.readlines()
     pbook = []
     for entry in entries:
         values = entry.split(';')
-        e = Entry(number=values[0], name=values[1])
+        lexed = parser.lexer("add %s %s" % (values[1], values[0]))
+        succ, parsed = parser.parse(lexed)
+        if succ:
+            pbook = exe(pbook, parsed)
+        else:
+            print "error, bad filetype"
+            return []
         if len(values) > 2:
             for i in range(len(values) - 2):
-                e.alias(values[i + 2])
-        pbook.append(e)
-    
+                lexed = parser.lexer("alias %s %s" % (values[1], \
+                    values[i + 2]))
+                succ, parsed = parser.parse(lexed)
+                if succ:
+                    pbook = exe(pbook, parsed)
+                else:
+                    print "error, bad filetype"
+                    return []
+    f.close()
     return pbook
     
 def exe(pbook, tree):
@@ -110,12 +136,11 @@ def exe(pbook, tree):
         elif statement[0] == parser.Keyword("lookup"):
             res = lookup(pbook, statement[1])
         elif statement[0] == parser.Keyword("change"):
-            res = change(pbook, statement[1], statement[2])
+            pbook, res = change(pbook, statement[1], statement[2])
         elif statement[0] == parser.Keyword("save"):
             save(pbook, statement[1])
         elif statement[0] == parser.Keyword("load"):
             pbook = load(statement[1])
-            print pbook
         elif statement[0] == parser.Keyword("quit"):
             sys.exit(0)
             
@@ -123,17 +148,22 @@ def exe(pbook, tree):
         if not res == '':
             print res
             res = ''
-        return pbook
+    return pbook
 
 prompt = "phonebook :> "
 def main():
     pbook = []
     if len(sys.argv) > 1:
+        # if a file is an argument
         for line in open(sys.argv[1], 'r'):
-           print prompt,
-           print line
-           succ, tree = parser.parse(parser.lexer(line))
-           pbook = exe(pbook, tree)
+            l = line.strip('\n')
+            print prompt,
+            print l
+            succ, tree = parser.parse(parser.lexer(l))
+            if succ:
+                pbook = exe(pbook, tree)
+            else:
+                print tree
     else:
         while True:
             try:
@@ -141,10 +171,13 @@ def main():
             except:
                 break
             succ, tree = parser.parse(parser.lexer(a))
-            if succ:
+            if len(tree) == 0:
+                print "not a keyword"
+            elif succ:
                 pbook = exe(pbook, tree)
-            else:
-                print "derp"
+            elif not succ:
+                print tree
 
 if __name__ == '__main__':
+    #go if not an imported module
     main()

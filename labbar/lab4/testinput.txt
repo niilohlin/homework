@@ -9,5 +9,9 @@ alias kantaroce roc
 change niil 4321
 
 alias hurr durr
+change dinmamma kalas
+add uberman 1337
+add berzelius 1828
+add e 2.71
 save database
 quit
