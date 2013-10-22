@@ -15,6 +15,9 @@ class Entry:
     
     def change(self, newnumber):
         self.number = newnumber
+    
+    def __repr__(self):
+        return str(self.aliaslist) + " " + str(self.number)
 
 
 
@@ -23,8 +26,8 @@ def remove(pbook, name, number):
     and number removed
     """
     if get(pbook, name, number):
-        return filter(lambda entry: entry.number != number and \
-                not name in entry.aliaslist, pbook), ""
+        return filter(lambda entry: (entry.number != number) or \
+                (not name in entry.aliaslist), pbook), ""
     else:
         return pbook, "%s with number %s not in phonebook" % (name, number)
         
@@ -83,9 +86,13 @@ def lookup(pbook, name):
     """Return a string that describes the presence of name
     in pbook
     """
-    temp = get(pbook, name)
-    if not temp == None:
-        return "%s has phonenumber %s" %(name, temp.number)
+    temp = get_all(pbook, name)
+    if temp:
+        return reduce((lambda x,y:x+y), 
+                map(lambda num:
+                    str(name) + " has phonenumber %s\n" %
+                    num.number, temp)).strip('\n')
+#        return "%s has phonenumber %s" %(name, temp.number)
     else:
         return not_found % name
 
@@ -96,6 +103,15 @@ def change(pbook, name, number):
         return res, ""
     else:
         return res, not_found % name
+    
+def change_with_pn(pbook, name, number, newnumber):
+    temp = get(pbook, name, number)
+    res = pbook[:]
+    if temp:
+        get(res, name, number).number = newnumber
+        return res, ""
+    else:
+        return res, not_found + "with number %s" % (name, number)
         
 def save(pbook, filename):
     
@@ -167,6 +183,8 @@ def exe(pbook, tree):
             sys.exit(0)
         elif statement[0] == parser.Keyword("remove"):
             pbook, res = remove(pbook, statement[1], statement[2])
+        elif statement[0] == parser.Keyword("change_with_pn"):
+            pbook, res = change_with_pn(pbook, statement[1], statement[2], statement[3])
             
 
         if not res == '':

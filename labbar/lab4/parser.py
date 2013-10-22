@@ -58,8 +58,8 @@ def lexer(string):
             tokens.append(Keyword(word))
         else:
             tokens.append(Identifier(word))
-            if i > 3 and (words[i - 3] == 'change' or words[i - 3] == 'alias'):
-                tokens[i - 3] = Keyword(word + '_with_pn')
+            if i > 2 and (words[i - 3] == 'change' or words[i - 3] == 'alias'):
+                tokens[i - 3] = Keyword(words[i - 3] + '_with_pn')
             
     return tokens
     
