@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[swedish]{babel}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+\section{Problem 5}
+$$
+    l(a) =
+    \begin{cases}
+        0           & \text{if } a = 1 \\
+        1 + l(f(a)) & \text{otherwise}
+    \end{cases}
+$$
+where
+$$
+    f(a) =
+    \begin{cases}
+        1         & \text{if } a = 1 \\
+        \frac a 2 & \text{if } a \text{ is even} \\
+        3a + 1    & \text{othewise}
+    \end{cases}
+$$
+
+\section{Problem 7}
+There are two scenarios where the function does not converge to $1$. The first
+one is that the function converges to some other number or loop. That would mean
+that my program would loop forever i.e.\ until user termination.
+
+The other scenario is that the function diverges. And in that case my program
+would suffer integer overflow. The value of the integer would become negative
+and that would mess up the series.
+
+\section{Problem 10}
+\begin{enumerate}
+    \item I think it is the size of $k$. This is because $k$ is the variable
+        iterated over and $x$ is not.
+    \item derp.
+    \item I think that $N_1(k)$ is linear.
+    \item I think that $N_2(k)$ is logarithmic.
+\end{enumerate}
+
+\end{document}
