@@ -18,6 +18,12 @@ public class Prog5 {
 		}
 	}
 	
+	/**
+	 * Like <tt>rec_raise_eff</tt> but linear.
+	 * @param x
+	 * @param k
+	 * @return x^k
+	 */
 	private static double rec_raise(double x, int k) {
 		counter++;
 		if (k == 0) {
