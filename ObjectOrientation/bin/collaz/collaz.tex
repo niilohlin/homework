@@ -1,0 +1,229 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[swedish]{babel}
+\usepackage[utf8]{inputenc}
+
+\begin{document}
+\section{Problem 5}
+$$
+    l(a) =
+    \begin{cases}
+        0           & \text{if } a = 1 \\
+        1 + l(f(a)) & \text{otherwise}
+    \end{cases}
+$$
+where
+$$
+    f(a) =
+    \begin{cases}
+        1         & \text{if } a = 1 \\
+        \frac a 2 & \text{if } a \text{ is even} \\
+        3a + 1    & \text{othewise}
+    \end{cases}
+$$
+
+\section{Problem 7}
+There are two scenarios where the function does not converge to $1$. The first
+one is that the function converges to some other number or loop. That would mean
+that my program would loop forever i.e.\ until user termination.
+
+The other scenario is that the function diverges. And in that case my program
+would suffer integer overflow. The value of the integer would become negative
+and that would mess up the series.
+
+\section{Problem 10}
+\begin{enumerate}
+    \item I think it is the size of $k$. This is because $k$ is the variable
+        iterated over and $x$ is not.
+    \item derp.
+    \item I think that $N_1(k)$ is linear.
+    \item I think that $N_2(k)$ is logarithmic.
+\end{enumerate}
+\setlength{\unitlength}{0.240900pt}
+\ifx\plotpoint\undefined\newsavebox{\plotpoint}\fi
+\sbox{\plotpoint}{\rule[-0.200pt]{0.400pt}{0.400pt}}%
+\begin{picture}(1500,900)(0,0)
+\sbox{\plotpoint}{\rule[-0.200pt]{0.400pt}{0.400pt}}%
+\put(110.0,82.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(90,82){\makebox(0,0)[r]{ 0}}
+\put(1419.0,82.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(110.0,153.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(90,153){\makebox(0,0)[r]{ 5}}
+\put(1419.0,153.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(110.0,223.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(90,223){\makebox(0,0)[r]{ 10}}
+\put(1419.0,223.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(110.0,294.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(90,294){\makebox(0,0)[r]{ 15}}
+\put(1419.0,294.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(110.0,365.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(90,365){\makebox(0,0)[r]{ 20}}
+\put(1419.0,365.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(110.0,435.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(90,435){\makebox(0,0)[r]{ 25}}
+\put(1419.0,435.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(110.0,506.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(90,506){\makebox(0,0)[r]{ 30}}
+\put(1419.0,506.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(110.0,576.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(90,576){\makebox(0,0)[r]{ 35}}
+\put(1419.0,576.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(110.0,647.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(90,647){\makebox(0,0)[r]{ 40}}
+\put(1419.0,647.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(110.0,718.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(90,718){\makebox(0,0)[r]{ 45}}
+\put(1419.0,718.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(110.0,788.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(90,788){\makebox(0,0)[r]{ 50}}
+\put(1419.0,788.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(110.0,859.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(90,859){\makebox(0,0)[r]{ 55}}
+\put(1419.0,859.0){\rule[-0.200pt]{4.818pt}{0.400pt}}
+\put(110.0,82.0){\rule[-0.200pt]{0.400pt}{4.818pt}}
+\put(110,41){\makebox(0,0){ 0}}
+\put(110.0,839.0){\rule[-0.200pt]{0.400pt}{4.818pt}}
+\put(243.0,82.0){\rule[-0.200pt]{0.400pt}{4.818pt}}
+\put(243,41){\makebox(0,0){ 5}}
+\put(243.0,839.0){\rule[-0.200pt]{0.400pt}{4.818pt}}
+\put(376.0,82.0){\rule[-0.200pt]{0.400pt}{4.818pt}}
+\put(376,41){\makebox(0,0){ 10}}
+\put(376.0,839.0){\rule[-0.200pt]{0.400pt}{4.818pt}}
+\put(509.0,82.0){\rule[-0.200pt]{0.400pt}{4.818pt}}
+\put(509,41){\makebox(0,0){ 15}}
+\put(509.0,839.0){\rule[-0.200pt]{0.400pt}{4.818pt}}
+\put(642.0,82.0){\rule[-0.200pt]{0.400pt}{4.818pt}}
+\put(642,41){\makebox(0,0){ 20}}
+\put(642.0,839.0){\rule[-0.200pt]{0.400pt}{4.818pt}}
+\put(775.0,82.0){\rule[-0.200pt]{0.400pt}{4.818pt}}
+\put(775,41){\makebox(0,0){ 25}}
+\put(775.0,839.0){\rule[-0.200pt]{0.400pt}{4.818pt}}
+\put(907.0,82.0){\rule[-0.200pt]{0.400pt}{4.818pt}}
+\put(907,41){\makebox(0,0){ 30}}
+\put(907.0,839.0){\rule[-0.200pt]{0.400pt}{4.818pt}}
+\put(1040.0,82.0){\rule[-0.200pt]{0.400pt}{4.818pt}}
+\put(1040,41){\makebox(0,0){ 35}}
+\put(1040.0,839.0){\rule[-0.200pt]{0.400pt}{4.818pt}}
+\put(1173.0,82.0){\rule[-0.200pt]{0.400pt}{4.818pt}}
+\put(1173,41){\makebox(0,0){ 40}}
+\put(1173.0,839.0){\rule[-0.200pt]{0.400pt}{4.818pt}}
+\put(1306.0,82.0){\rule[-0.200pt]{0.400pt}{4.818pt}}
+\put(1306,41){\makebox(0,0){ 45}}
+\put(1306.0,839.0){\rule[-0.200pt]{0.400pt}{4.818pt}}
+\put(1439.0,82.0){\rule[-0.200pt]{0.400pt}{4.818pt}}
+\put(1439,41){\makebox(0,0){ 50}}
+\put(1439.0,839.0){\rule[-0.200pt]{0.400pt}{4.818pt}}
+\put(110.0,82.0){\rule[-0.200pt]{0.400pt}{187.179pt}}
+\put(110.0,82.0){\rule[-0.200pt]{320.156pt}{0.400pt}}
+\put(1439.0,82.0){\rule[-0.200pt]{0.400pt}{187.179pt}}
+\put(110.0,859.0){\rule[-0.200pt]{320.156pt}{0.400pt}}
+\put(1279,819){\makebox(0,0)[r]{"rr.txt"}}
+\put(110,110){\makebox(0,0){$+$}}
+\put(137,124){\makebox(0,0){$+$}}
+\put(163,139){\makebox(0,0){$+$}}
+\put(190,153){\makebox(0,0){$+$}}
+\put(216,167){\makebox(0,0){$+$}}
+\put(243,181){\makebox(0,0){$+$}}
+\put(269,195){\makebox(0,0){$+$}}
+\put(296,209){\makebox(0,0){$+$}}
+\put(323,223){\makebox(0,0){$+$}}
+\put(349,237){\makebox(0,0){$+$}}
+\put(376,252){\makebox(0,0){$+$}}
+\put(402,266){\makebox(0,0){$+$}}
+\put(429,280){\makebox(0,0){$+$}}
+\put(456,294){\makebox(0,0){$+$}}
+\put(482,308){\makebox(0,0){$+$}}
+\put(509,322){\makebox(0,0){$+$}}
+\put(535,336){\makebox(0,0){$+$}}
+\put(562,350){\makebox(0,0){$+$}}
+\put(588,365){\makebox(0,0){$+$}}
+\put(615,379){\makebox(0,0){$+$}}
+\put(642,393){\makebox(0,0){$+$}}
+\put(668,407){\makebox(0,0){$+$}}
+\put(695,421){\makebox(0,0){$+$}}
+\put(721,435){\makebox(0,0){$+$}}
+\put(748,449){\makebox(0,0){$+$}}
+\put(775,463){\makebox(0,0){$+$}}
+\put(801,478){\makebox(0,0){$+$}}
+\put(828,492){\makebox(0,0){$+$}}
+\put(854,506){\makebox(0,0){$+$}}
+\put(881,520){\makebox(0,0){$+$}}
+\put(907,534){\makebox(0,0){$+$}}
+\put(934,548){\makebox(0,0){$+$}}
+\put(961,562){\makebox(0,0){$+$}}
+\put(987,576){\makebox(0,0){$+$}}
+\put(1014,591){\makebox(0,0){$+$}}
+\put(1040,605){\makebox(0,0){$+$}}
+\put(1067,619){\makebox(0,0){$+$}}
+\put(1093,633){\makebox(0,0){$+$}}
+\put(1120,647){\makebox(0,0){$+$}}
+\put(1147,661){\makebox(0,0){$+$}}
+\put(1173,675){\makebox(0,0){$+$}}
+\put(1200,689){\makebox(0,0){$+$}}
+\put(1226,704){\makebox(0,0){$+$}}
+\put(1253,718){\makebox(0,0){$+$}}
+\put(1280,732){\makebox(0,0){$+$}}
+\put(1306,746){\makebox(0,0){$+$}}
+\put(1333,760){\makebox(0,0){$+$}}
+\put(1359,774){\makebox(0,0){$+$}}
+\put(1386,788){\makebox(0,0){$+$}}
+\put(1412,802){\makebox(0,0){$+$}}
+\put(1349,819){\makebox(0,0){$+$}}
+\put(1279,778){\makebox(0,0)[r]{"rre.txt"}}
+\put(110,110){\makebox(0,0){$\times$}}
+\put(137,124){\makebox(0,0){$\times$}}
+\put(163,124){\makebox(0,0){$\times$}}
+\put(190,139){\makebox(0,0){$\times$}}
+\put(216,139){\makebox(0,0){$\times$}}
+\put(243,139){\makebox(0,0){$\times$}}
+\put(269,139){\makebox(0,0){$\times$}}
+\put(296,153){\makebox(0,0){$\times$}}
+\put(323,153){\makebox(0,0){$\times$}}
+\put(349,153){\makebox(0,0){$\times$}}
+\put(376,153){\makebox(0,0){$\times$}}
+\put(402,153){\makebox(0,0){$\times$}}
+\put(429,153){\makebox(0,0){$\times$}}
+\put(456,153){\makebox(0,0){$\times$}}
+\put(482,153){\makebox(0,0){$\times$}}
+\put(509,167){\makebox(0,0){$\times$}}
+\put(535,167){\makebox(0,0){$\times$}}
+\put(562,167){\makebox(0,0){$\times$}}
+\put(588,167){\makebox(0,0){$\times$}}
+\put(615,167){\makebox(0,0){$\times$}}
+\put(642,167){\makebox(0,0){$\times$}}
+\put(668,167){\makebox(0,0){$\times$}}
+\put(695,167){\makebox(0,0){$\times$}}
+\put(721,167){\makebox(0,0){$\times$}}
+\put(748,167){\makebox(0,0){$\times$}}
+\put(775,167){\makebox(0,0){$\times$}}
+\put(801,167){\makebox(0,0){$\times$}}
+\put(828,167){\makebox(0,0){$\times$}}
+\put(854,167){\makebox(0,0){$\times$}}
+\put(881,167){\makebox(0,0){$\times$}}
+\put(907,167){\makebox(0,0){$\times$}}
+\put(934,181){\makebox(0,0){$\times$}}
+\put(961,181){\makebox(0,0){$\times$}}
+\put(987,181){\makebox(0,0){$\times$}}
+\put(1014,181){\makebox(0,0){$\times$}}
+\put(1040,181){\makebox(0,0){$\times$}}
+\put(1067,181){\makebox(0,0){$\times$}}
+\put(1093,181){\makebox(0,0){$\times$}}
+\put(1120,181){\makebox(0,0){$\times$}}
+\put(1147,181){\makebox(0,0){$\times$}}
+\put(1173,181){\makebox(0,0){$\times$}}
+\put(1200,181){\makebox(0,0){$\times$}}
+\put(1226,181){\makebox(0,0){$\times$}}
+\put(1253,181){\makebox(0,0){$\times$}}
+\put(1280,181){\makebox(0,0){$\times$}}
+\put(1306,181){\makebox(0,0){$\times$}}
+\put(1333,181){\makebox(0,0){$\times$}}
+\put(1359,181){\makebox(0,0){$\times$}}
+\put(1386,181){\makebox(0,0){$\times$}}
+\put(1412,181){\makebox(0,0){$\times$}}
+\put(1349,778){\makebox(0,0){$\times$}}
+\put(110.0,82.0){\rule[-0.200pt]{0.400pt}{187.179pt}}
+\put(110.0,82.0){\rule[-0.200pt]{320.156pt}{0.400pt}}
+\put(1439.0,82.0){\rule[-0.200pt]{0.400pt}{187.179pt}}
+\put(110.0,859.0){\rule[-0.200pt]{320.156pt}{0.400pt}}
+\end{picture}
+\end{document}
