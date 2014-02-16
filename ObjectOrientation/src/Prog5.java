@@ -4,6 +4,7 @@ public class Prog5 {
 	public static void main(String[] args) {
 		test_small();
 	}
+	
 
 	private static double rec_raise_eff(double x, int k) {
 		counter++;
@@ -59,7 +60,9 @@ public class Prog5 {
 		for(int i : testrrData)
 			
 			System.out.println(i);
-		for(int i : testrreData)
-			System.out.println(i);
+
+		for(int i = 0; i< testrreData.length; i++)
+			System.out.println(testrreData[i] + " . " + 
+                    (2 + Math.log(i + 1) / Math.log(2)));
 	}
 }
