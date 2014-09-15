@@ -1,0 +1,9 @@
+('/home/niil/workspace/homework/labbar/lab4/build/testinput/testinput',
+ True,
+ False,
+ None,
+ None,
+ [],
+ None,
+ True,
+ 1409337613)
